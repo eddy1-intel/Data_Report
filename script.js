@@ -114,10 +114,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function generateReport() {
     const storedData = JSON.parse(localStorage.getItem("projectData")) || [];
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    const doc = new jsPDF('p', 'pt', 'a4'); // 'pt' for points, A4 size for better space utilization
   
     doc.setFontSize(14);
-    doc.text("Project Data Report", 14, 15);
+    doc.text("Project Data Report", 40, 30);
   
     // Prepare the data for the table
     const tableData = storedData.map(data => [
@@ -147,25 +147,27 @@ document.addEventListener("DOMContentLoaded", () => {
     doc.autoTable({
       head: [columns.map(col => col.header)],
       body: tableData,
-      startY: 25,
+      startY: 40,
       theme: 'grid',
       headStyles: { fillColor: [41, 128, 185], textColor: 255, halign: 'center' },
       styles: {
-        fontSize: 10,
-        cellPadding: 3,
-        overflow: 'linebreak' // Allow content to wrap within cells
+        fontSize: 8,           // Reduced font size for better fit
+        cellPadding: 4,        // Reduced padding
+        overflow: 'linebreak', // Ensure content wraps within cells
+        valign: 'middle'
       },
       columnStyles: {
-        0: { cellWidth: 30 },  // Project Entered
-        1: { cellWidth: 30 },  // Project Name
-        2: { cellWidth: 20 },  // AR
-        3: { cellWidth: 30 },  // AR Owner
-        4: { cellWidth: 40 },  // AR Detail
-        5: { cellWidth: 30 },  // Estimated Completion Date
-        6: { cellWidth: 40 },  // Comments
-        7: { cellWidth: 15 }   // Priority
+        0: { cellWidth: 60 },  // Project Entered
+        1: { cellWidth: 60 },  // Project Name
+        2: { cellWidth: 40 },  // AR
+        3: { cellWidth: 60 },  // AR Owner
+        4: { cellWidth: 80 },  // AR Detail
+        5: { cellWidth: 60 },  // Estimated Completion Date
+        6: { cellWidth: 80 },  // Comments
+        7: { cellWidth: 40 }   // Priority
       },
-      margin: { top: 20, bottom: 20 }, // Set margins to avoid cutoff
+      margin: { top: 40, bottom: 40 }, // Set margins to ensure no cutoff
+      pageBreak: 'auto',               // Ensure rows continue on the next page if needed
       didDrawPage: function (data) {
         // Add footer with page number
         doc.setFontSize(10);
@@ -176,6 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Save the PDF
     doc.save("Project_Data_Report.pdf");
   }
+  
   
   
   function toggleDataDisplay() {
