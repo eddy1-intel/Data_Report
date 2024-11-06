@@ -76,52 +76,53 @@ button[type="submit"]:hover {
 
 /* Table Styling with Text Wrapping */
 table {
-  width: 100%;
+  width: 102%;
   border-collapse: collapse;
-  margin-top: 20px;
-  table-layout: fixed; /* Ensure table does not exceed container width */
 }
 
 th, td {
   padding: 8px;
   border: 1px solid #ddd;
   text-align: left;
-  word-wrap: break-word; /* Ensure long text wraps within cells */
-  white-space: normal;    /* Allow text wrapping */
-  font-size: 12px; /* Reduced font size for better fit */
+  word-wrap: break-word; /* Ensure text wraps in cells */
 }
 
-thead {
-  background-color: #f4f4f9;
+th:nth-child(1), td:nth-child(1) {
+  width: 15px; /* Project Entered */
 }
 
-th {
-  font-weight: bold;
+th:nth-child(2), td:nth-child(2) {
+  width: 40px; /* Project Name */
 }
 
-/* Column Widths */
-th:nth-child(1), td:nth-child(1),
-th:nth-child(2), td:nth-child(2),
-th:nth-child(3), td:nth-child(3),
-th:nth-child(4), td:nth-child(4),
+th:nth-child(3), td:nth-child(3) {
+  width: 70px; /* AR */
+}
+
+th:nth-child(4), td:nth-child(4) {
+  width: 15px; /* AR Owner */
+}
+
 th:nth-child(5), td:nth-child(5) {
-  max-width: 120px; /* Limit width for specific columns */
-  overflow: hidden;
-  text-overflow: ellipsis; /* Indicate truncated text with ellipsis */
+  width: 160px; /* AR Detail */
 }
 
 th:nth-child(6), td:nth-child(6) {
-  max-width: 140px;
+  width: 10px; /* Estimated Completion Date */
 }
 
 th:nth-child(7), td:nth-child(7) {
-  max-width: 180px;
+  width: 80px; /* Comments */
 }
 
-th:nth-child(8), td:nth-child(8),
+th:nth-child(8), td:nth-child(8) {
+  width: 5px; /* Priority */
+  text-align: center; /* Center align the Priority column */
+}
+
 th:nth-child(9), td:nth-child(9) {
-  max-width: 60px;
-  text-align: center;
+  width: 5px; /* Actions */
+  text-align: center; /* Center align buttons in Actions column */
 }
 
 /* Adjusted Action Button Styling */
