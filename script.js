@@ -64,15 +64,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayData(data, index) {
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td>${data.projectEntered}</td>
-      <td>${data.projectName}</td>
-      <td>${data.ar}</td>
-      <td>${data.arOwner}</td>
-      <td>${data.arDetail}</td>
-      <td>${data.completionDate}</td>
-      <td>${data.comments}</td>
-      <td>${data.priority}</td>
-      <td>
+      <td style="width: 15px;">${data.projectEntered}</td>
+      <td style="width: 40px;">${data.projectName}</td>
+      <td style="width: 160px;">${data.ar}</td>
+      <td style="width: 15px;">${data.arOwner}</td>
+      <td style="width: 160px; word-wrap: break-word;">${data.arDetail}</td>
+      <td style="width: 10px;">${data.completionDate}</td>
+      <td style="width: 100px; word-wrap: break-word;">${data.comments}</td>
+      <td style="width: 5px; text-align: center;">${data.priority}</td>
+      <td style="width: 5px; text-align: center;">
         <button class="action-btn" onclick="editData(${index})">✏️</button>
         <button class="action-btn" onclick="deleteData(${index})">🗑️</button>
       </td>
@@ -116,8 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'pt', 'a4'); // 'pt' for points, A4 size for better space utilization
   
-    doc.setFontSize(14);
+    doc.setFontSize(10);
     doc.text("Project Data Report", 40, 30);
+  
+  
   
     // Prepare the data for the table
     const tableData = storedData.map(data => [
@@ -129,7 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
       data.completionDate,
       data.comments,
       data.priority
-    ]);
+    ])
+    ;
   
     // Define table columns
     const columns = [
@@ -156,17 +159,19 @@ document.addEventListener("DOMContentLoaded", () => {
         overflow: 'linebreak', // Ensure content wraps within cells
         valign: 'middle'
       },
+      tableWidth: 'auto',
       columnStyles: {
-        0: { cellWidth: 60 },  // Project Entered
-        1: { cellWidth: 60 },  // Project Name
-        2: { cellWidth: 40 },  // AR
-        3: { cellWidth: 60 },  // AR Owner
-        4: { cellWidth: 80 },  // AR Detail
-        5: { cellWidth: 60 },  // Estimated Completion Date
+        0: { cellWidth: 30 },  // Project Entered
+        1: { cellWidth: 40 },  // Project Name
+        2: { cellWidth: 70 },  // AR
+        3: { cellWidth: 120 },  // AR Owner
+        4: { cellWidth: 120 },  // AR Detail
+        5: { cellWidth: 30 },  // Estimated Completion Date
         6: { cellWidth: 80 },  // Comments
-        7: { cellWidth: 20 }   // Priority
+        7: { cellWidth: 20 },   // Priority
+        8: { cellWidth: 30 }
       },
-      margin: { top: 40, bottom: 40 }, // Set margins to ensure no cutoff
+      margin: { top: 50, bottom: 50 }, // Set margins to ensure no cutoff
       pageBreak: 'auto',               // Ensure rows continue on the next page if needed
       didDrawPage: function (data) {
         // Add footer with page number
@@ -178,6 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Save the PDF
     doc.save("Project_Data_Report.pdf");
   }
+  
+  
+  
   
   
   
