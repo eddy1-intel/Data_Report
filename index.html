@@ -12,13 +12,13 @@
 </head>
 <body>
   <div class="container">
-    <h1> Info Data Storage</h1>
+    <h1>Project Data Storage</h1>
     
     <div class="content-wrapper">
       <form id="dataForm">
         <div class="form-row">
           <label for="projectEntered">Project Entered:</label>
-          <input type="text" id="projectEntered" required>
+          <input type="date" id="projectEntered" required>
         </div>
         
         <div class="form-row">
@@ -65,6 +65,7 @@
 
       <div class="stored-data-section">
         <h2>Stored Data <button id="toggleData" class="toggle-btn">Collapse</button></h2>
+        
         <table id="dataTable">
           <thead>
             <tr>
@@ -73,10 +74,10 @@
               <th>AR</th>
               <th>AR Owner</th>
               <th>AR Detail</th>
-              <th>Estimated Completion Date</th>
+              <th>ECD</th>
               <th>Comments</th>
-              <th>Priority</th>
-              <th>Actions</th>
+              <th>Prio</th>
+              <th>Act</th>
             </tr>
           </thead>
           <tbody id="dataList"></tbody>
