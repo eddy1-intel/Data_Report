@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
         4: { cellWidth: 80 },  // AR Detail
         5: { cellWidth: 60 },  // Estimated Completion Date
         6: { cellWidth: 80 },  // Comments
-        7: { cellWidth: 40 }   // Priority
+        7: { cellWidth: 20 }   // Priority
       },
       margin: { top: 40, bottom: 40 }, // Set margins to ensure no cutoff
       pageBreak: 'auto',               // Ensure rows continue on the next page if needed
