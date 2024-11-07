@@ -163,8 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
       columnStyles: {
         0: { cellWidth: 30 },  // Project Entered
         1: { cellWidth: 40 },  // Project Name
-        2: { cellWidth: 70 },  // AR
-        3: { cellWidth: 120 },  // AR Owner
+        2: { cellWidth: 120 },  // AR
+        3: { cellWidth: 70 },  // AR Owner
         4: { cellWidth: 120 },  // AR Detail
         5: { cellWidth: 30 },  // Estimated Completion Date
         6: { cellWidth: 80 },  // Comments
